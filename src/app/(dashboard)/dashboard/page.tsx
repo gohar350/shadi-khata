@@ -4,12 +4,14 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { formatDate } from "@/lib/utils";
 import { Calendar, Users, UserCheck, ArrowRight } from "lucide-react";
 import Link from "next/link";
+import { SEO } from "@/components/seo";
 
 export default async function DashboardPage() {
   const stats = await getDashboardStats();
 
   return (
     <>
+      <SEO title="Dashboard | Shadi Khata - Wedding Management" description="Your wedding (shadi) dashboard. View stats, events, families, and guests. The best marriage management app for Pakistan and India." />
       <Header title="Dashboard" />
       <main className="p-4 lg:p-8 pb-24 lg:pb-8">
         {/* Stats Cards */}

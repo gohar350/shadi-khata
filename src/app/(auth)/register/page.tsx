@@ -10,6 +10,7 @@ import { register as registerUser } from "@/actions/auth";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
+import { SEO } from "@/components/seo";
 
 export default function RegisterPage() {
   const [isLoading, setIsLoading] = useState(false);
@@ -44,67 +45,70 @@ export default function RegisterPage() {
   };
 
   return (
-    <Card className="w-full max-w-md">
-      <CardHeader className="text-center">
-        <CardTitle className="text-2xl">Create Account</CardTitle>
-        <p className="text-gray-500 dark:text-gray-400 mt-2">
-          Sign up to start managing your wedding events
-        </p>
-      </CardHeader>
-      <CardContent>
-        <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
-          {error && (
-            <div className="p-3 text-sm text-red-600 bg-red-50 dark:bg-red-900/20 dark:text-red-400 rounded-lg">
-              {error}
-            </div>
-          )}
+    <>
+      <SEO title="Register | Shadi Khata - Shadi (Marriage) App for Pakistan & India" description="Register for Shadi Khata, the best wedding (shadi) management app for Pakistan and India. Organize your marriage events, invitations, and families easily." />
+      <Card className="w-full max-w-md">
+        <CardHeader className="text-center">
+          <CardTitle className="text-2xl">Create Account</CardTitle>
+          <p className="text-gray-500 dark:text-gray-400 mt-2">
+            Sign up to start managing your wedding events
+          </p>
+        </CardHeader>
+        <CardContent>
+          <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
+            {error && (
+              <div className="p-3 text-sm text-red-600 bg-red-50 dark:bg-red-900/20 dark:text-red-400 rounded-lg">
+                {error}
+              </div>
+            )}
 
-          <Input
-            label="Name"
-            placeholder="Your name"
-            error={errors.name?.message}
-            {...register("name")}
-          />
+            <Input
+              label="Name"
+              placeholder="Your name"
+              error={errors.name?.message}
+              {...register("name")}
+            />
 
-          <Input
-            type="email"
-            label="Email"
-            placeholder="you@example.com"
-            error={errors.email?.message}
-            {...register("email")}
-          />
+            <Input
+              type="email"
+              label="Email"
+              placeholder="you@example.com"
+              error={errors.email?.message}
+              {...register("email")}
+            />
 
-          <Input
-            type="password"
-            label="Password"
-            placeholder="••••••••"
-            error={errors.password?.message}
-            {...register("password")}
-          />
+            <Input
+              type="password"
+              label="Password"
+              placeholder="••••••••"
+              error={errors.password?.message}
+              {...register("password")}
+            />
 
-          <Input
-            type="password"
-            label="Confirm Password"
-            placeholder="••••••••"
-            error={errors.confirmPassword?.message}
-            {...register("confirmPassword")}
-          />
+            <Input
+              type="password"
+              label="Confirm Password"
+              placeholder="••••••••"
+              error={errors.confirmPassword?.message}
+              {...register("confirmPassword")}
+            />
 
-          <Button type="submit" className="w-full" isLoading={isLoading}>
-            Create Account
-          </Button>
-        </form>
+            <Button type="submit" className="w-full" isLoading={isLoading}>
+              Create Account
+            </Button>
+          </form>
 
-        <p className="mt-6 text-center text-sm text-gray-500 dark:text-gray-400">
-          Already have an account?{" "}
-          <Link
-            href="/login"
-            className="text-primary-600 hover:text-primary-500 font-medium"
-          >
-            Sign in
-          </Link>
-        </p>
-      </CardContent>
-    </Card>
+          <p className="mt-6 text-center text-sm text-gray-500 dark:text-gray-400">
+            Already have an account?{" "}
+            <Link
+              href="/login"
+              className="text-primary-600 hover:text-primary-500 font-medium"
+            >
+              Sign in
+            </Link>
+          </p>
+        </CardContent>
+      </Card>
+    </>
   );
 }
