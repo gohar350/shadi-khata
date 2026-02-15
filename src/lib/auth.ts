@@ -4,6 +4,9 @@ import bcrypt from "bcryptjs";
 import { db } from "./db";
 import { loginSchema } from "./validations";
 
+const NEXTAUTH_URL = process.env.AUTH_URL || process.env.NEXTAUTH_URL || "http://localhost:3000";
+const NEXTAUTH_SECRET = process.env.AUTH_SECRET || process.env.NEXTAUTH_SECRET;
+
 export const { handlers, signIn, signOut, auth } = NextAuth({
   providers: [
     Credentials({
@@ -62,4 +65,6 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
   session: {
     strategy: "jwt",
   },
+  secret: NEXTAUTH_SECRET,
+  url: NEXTAUTH_URL,
 });
