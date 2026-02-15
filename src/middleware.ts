@@ -1,8 +1,11 @@
 import { NextResponse, NextRequest } from "next/server";
 
 export function middleware(req: NextRequest) {
-  // Check for session token cookie (NextAuth default: `next-auth.session-token`)
-  const sessionToken = req.cookies.get("next-auth.session-token") || req.cookies.get("__Secure-next-auth.session-token");
+  // Check for all possible session token cookie names
+  const sessionToken =
+    req.cookies.get("authjs.session-token") ||
+    req.cookies.get("next-auth.session-token") ||
+    req.cookies.get("__Secure-next-auth.session-token");
 
   const isLoggedIn = !!sessionToken;
   const isAuthPage =
