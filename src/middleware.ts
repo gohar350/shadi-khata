@@ -3,6 +3,7 @@ import { NextResponse, NextRequest } from "next/server";
 export function middleware(req: NextRequest) {
   // Check for all possible session token cookie names
   const sessionToken =
+    req.cookies.get("__Secure-authjs.session-token") ||
     req.cookies.get("authjs.session-token") ||
     req.cookies.get("next-auth.session-token") ||
     req.cookies.get("__Secure-next-auth.session-token");
